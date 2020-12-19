@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Keyboard from './Keyboard';
+import RandomNoteLayer from './RandomNoteLayer';
 import { playNote, stopNote } from './audio';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 			onKeyDown={handleKeyDown}
 			onKeyUp={handleKeyUp}
 			tabIndex='0'>
+			<RandomNoteLayer activeKeyList={activeKeyList} />
 			<Keyboard activeKeyList={activeKeyList} />
 		</div>
 	);
