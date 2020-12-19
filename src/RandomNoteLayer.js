@@ -7,38 +7,55 @@ export default class RandomNoteLayer extends React.Component {
 		super(props);
 
 		this.state = {
-			top: 0,
-			left: 0,
+			newNotes: [],
 		};
 	}
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.activeKeyList < this.props.activeKeyList) {
-			this.setState({
-				top: Number((Math.random() * 60).toFixed(0)),
-				left: Number((Math.random() * 80 + 1).toFixed(0)),
-			});
+			const randomClass =
+				Math.random().toString(36).substring(2, 15) +
+				Math.random().toString(36).substring(2, 15);
+
+			console.log(typeof randomClass, 'type of', randomClass);
+
+			const newNotesRaw = (
+				<img
+					className='lilNote'
+					src={noteIcon}
+					style={{
+						height: '100px',
+						position: 'absolute',
+						top: `${Number((Math.random() * 60).toFixed(0))}%`,
+						left: `${Number((Math.random() * 80 + 1).toFixed(0))}%`,
+						opacity: '0',
+					}}
+					alt='note'
+				/>
+			);
+
+			this.setState({ newNotes: newNotesRaw });
 
 			anime({
 				targets: '.lilNote',
 				opacity: 1,
-				duration: 700,
+				duration: 500,
 				direction: 'alternate',
 				easing: 'easeInOutQuad',
+				translateY: { value: -20 },
 			});
 
-			anime({
-				targets: '.lilNote',
-				translateY: 300,
-				duration: 2000,
-				easing: 'easeInOutQuad',
-				direction: 'reverse',
-			});
+			// anime({
+			// 	targets: '.lilNote',
+			// 	translateY: 300,
+			// 	duration: 2000,
+			// 	easing: 'easeInOutQuad',
+			// 	direction: 'reverse',
+			// });
 		}
 	}
 
 	render() {
-		console.log(this.state.top, this.state.left);
 		return (
 			<div
 				className='randomNoteLayer'
@@ -51,19 +68,7 @@ export default class RandomNoteLayer extends React.Component {
 					right: '0',
 					zIndex: '100',
 				}}>
-				<img
-					className='lilNote'
-					src={noteIcon}
-					style={{
-						height: '100px',
-						position: 'absolute',
-
-						top: `${this.state.top}%`,
-						left: `${this.state.left}%`,
-						opacity: '0',
-					}}
-					alt='note'
-				/>
+				{this.state.newNotes}
 			</div>
 		);
 	}
