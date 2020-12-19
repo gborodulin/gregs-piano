@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Keyboard from './Keyboard';
+import { playNote, stopNote } from './audio';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [activeKeyList, setActiveKeyList] = useState([]);
+
+	function handleKeyDown(e) {
+		const keyCode = e.keyCode;
+		const curList = [...activeKeyList];
+
+		if (!curList.includes(keyCode)) {
+			curList.push(keyCode);
+			setActiveKeyList(curList);
+			playNote(keyCode);
+		}
+	}
+
+	function handleKeyUp(e) {
+		const keyCode = e.keyCode;
+		const curList = activeKeyList;
+
+		if (curList.includes(keyCode)) {
+			const newArr = curList.filter((cur) => cur !== keyCode);
+			setActiveKeyList(newArr);
+			stopNote(keyCode);
+		}
+	}
+
+	return (
+		<div
+			className='App'
+			onKeyDown={handleKeyDown}
+			onKeyUp={handleKeyUp}
+			tabIndex='0'>
+			<Keyboard activeKeyList={activeKeyList} />
+		</div>
+	);
 }
 
 export default App;
