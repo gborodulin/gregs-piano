@@ -3,6 +3,7 @@ import './App.css';
 import Keyboard from './Keyboard';
 import RandomNoteLayer from './RandomNoteLayer';
 import { playNote, stopNote } from './audio';
+import keyList from './keyList';
 
 function App() {
 	const [activeKeyList, setActiveKeyList] = useState([]);
@@ -14,9 +15,13 @@ function App() {
 
 	function handleKeyDown(e) {
 		const keyCode = e.keyCode;
+		const acceptedKeys = keyList.map((cur) => {
+			return cur.keyCode;
+		});
+
 		const curList = [...activeKeyList];
 
-		if (!curList.includes(keyCode)) {
+		if (!curList.includes(keyCode) && acceptedKeys.includes(keyCode)) {
 			curList.push(keyCode);
 			setActiveKeyList(curList);
 			playNote(keyCode);
