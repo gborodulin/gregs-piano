@@ -16,7 +16,9 @@ function Keyboard(props) {
 				: '';
 
 			newComponents.push(
-				<li className={`${activeClass} ${cur.originalClasses}`}></li>
+				<li className={`${activeClass} ${cur.originalClasses}`}>
+					<div className='keyName'>{cur.keyName}</div>
+				</li>
 			);
 		});
 		setKeyComponents(newComponents);

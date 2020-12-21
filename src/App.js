@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Keyboard from './Keyboard';
 import RandomNoteLayer from './RandomNoteLayer';
@@ -6,6 +6,11 @@ import { playNote, stopNote } from './audio';
 
 function App() {
 	const [activeKeyList, setActiveKeyList] = useState([]);
+	const appRef = useRef();
+
+	useEffect(() => {
+		appRef.current.focus();
+	}, []);
 
 	function handleKeyDown(e) {
 		const keyCode = e.keyCode;
@@ -34,7 +39,8 @@ function App() {
 			className='App'
 			onKeyDown={handleKeyDown}
 			onKeyUp={handleKeyUp}
-			tabIndex='0'>
+			tabIndex='0'
+			ref={appRef}>
 			<RandomNoteLayer activeKeyList={activeKeyList} />
 			<Keyboard activeKeyList={activeKeyList} />
 		</div>
