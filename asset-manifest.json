@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2cbbb13c.chunk.css",
+    "main.js": "/static/js/main.647322a7.chunk.js",
+    "main.js.map": "/static/js/main.647322a7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.579a8fba.js",
+    "runtime-main.js.map": "/static/js/runtime-main.579a8fba.js.map",
+    "static/js/2.c8fa3df7.chunk.js": "/static/js/2.c8fa3df7.chunk.js",
+    "static/js/2.c8fa3df7.chunk.js.map": "/static/js/2.c8fa3df7.chunk.js.map",
+    "static/js/3.7997b39b.chunk.js": "/static/js/3.7997b39b.chunk.js",
+    "static/js/3.7997b39b.chunk.js.map": "/static/js/3.7997b39b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.2cbbb13c.chunk.css.map": "/static/css/main.2cbbb13c.chunk.css.map",
+    "static/js/2.c8fa3df7.chunk.js.LICENSE.txt": "/static/js/2.c8fa3df7.chunk.js.LICENSE.txt",
+    "static/media/allNotes.b65f3e29.mp3": "/static/media/allNotes.b65f3e29.mp3",
+    "static/media/App.css": "/static/media/backgroundRoom.f810daf1.png",
+    "static/media/Keyboard.css": "/static/media/grandPiano.09189231.png",
+    "static/media/musical-note.49e6a279.svg": "/static/media/musical-note.49e6a279.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.579a8fba.js",
+    "static/js/2.c8fa3df7.chunk.js",
+    "static/css/main.2cbbb13c.chunk.css",
+    "static/js/main.647322a7.chunk.js"
+  ]
+}
